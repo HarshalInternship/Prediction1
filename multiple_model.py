@@ -100,42 +100,44 @@ if selected == 'Parkinsons Prediction':
     st.title("Parkinson's Disease Prediction using ML")
 
     col1, col2, col3 = st.columns(3)
+
     with col1:
-        fo = st.text_input('Average Fundamental Frequency')
+        fo = st.text_input('Average Fundamental Frequency (Fo)')
         jitter_percent = st.text_input('Jitter (%)')
         rap = st.text_input('RAP')
         shimmer = st.text_input('Shimmer')
         apq3 = st.text_input('APQ3')
         apq = st.text_input('APQ')
-        nhr = st.text_input('NHR')
-        rpde = st.text_input('RPDE')
+        nhr = st.text_input('Noise to Harmonic Ratio (NHR)')
+        rpde = st.text_input('Recurrence Period Density Entropy (RPDE)')
+
     with col2:
-        fhi = st.text_input('Max Fundamental Frequency')
+        fhi = st.text_input('Max Fundamental Frequency (Fhi)')
         jitter_abs = st.text_input('Jitter (Abs)')
         ppq = st.text_input('PPQ')
         shimmer_dB = st.text_input('Shimmer (dB)')
         apq5 = st.text_input('APQ5')
         dda2 = st.text_input('DDA')
-        hnr = st.text_input('HNR')
-        dfa = st.text_input('DFA')
+        hnr = st.text_input('Harmonic to Noise Ratio (HNR)')
+        dfa = st.text_input('Detrended Fluctuation Analysis (DFA)')
+
     with col3:
-        flo = st.text_input('Min Fundamental Frequency')
+        flo = st.text_input('Min Fundamental Frequency (Flo)')
         dda = st.text_input('DDA (Jitter)')
         spread1 = st.text_input('Spread1')
         spread2 = st.text_input('Spread2')
         d2 = st.text_input('D2')
-        ppe = st.text_input('PPE')
+        ppe = st.text_input('Pitch Period Entropy (PPE)')
 
-    if st.button("Parkinson's Test Result"):
+    if st.button("Get Parkinson's Prediction"):
         try:
             input_data = [[
-    float(fo), float(fhi), float(flo), float(jitter_percent), float(jitter_abs),
-    float(rap), float(ppq), float(dda), float(shimmer), float(shimmer_dB),
-    float(apq3), float(apq5), float(apq), float(dda2), float(nhr), float(hnr),
-    float(rpde), float(dfa), float(spread1), float(spread2), float(d2), float(ppe)
-]]
-
+                float(fo), float(fhi), float(flo), float(jitter_percent), float(jitter_abs),
+                float(rap), float(ppq), float(dda), float(shimmer), float(shimmer_dB),
+                float(apq3), float(apq5), float(apq), float(dda2), float(nhr), float(hnr),
+                float(rpde), float(dfa), float(spread1), float(spread2), float(d2), float(ppe)
+            ]]
             prediction = parkinsons_model.predict(input_data)
-            st.success("Has Parkinson's Disease" if prediction[0] == 1 else "No Parkinson's Disease")
+            st.success("✅ Has Parkinson's Disease" if prediction[0] == 1 else "✅ No Parkinson's Disease")
         except Exception as e:
-            st.error(f"Error: {e}")
+            st.error(f"Prediction Error: {e}")
