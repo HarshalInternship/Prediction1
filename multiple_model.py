@@ -129,12 +129,12 @@ if selected == 'Parkinsons Prediction':
     if st.button("Parkinson's Test Result"):
         try:
             input_data = [[
-                0.0,  # Dummy value for 'name'
-                float(fo), float(fhi), float(flo), float(jitter_percent), float(jitter_abs),
-                float(rap), float(ppq), float(dda), float(shimmer), float(shimmer_dB),
-                float(apq3), float(apq5), float(apq), float(dda2), float(nhr), float(hnr),
-                float(rpde), float(dfa), float(spread1), float(spread2), float(d2), float(ppe)
-            ]]
+    float(fo), float(fhi), float(flo), float(jitter_percent), float(jitter_abs),
+    float(rap), float(ppq), float(dda), float(shimmer), float(shimmer_dB),
+    float(apq3), float(apq5), float(apq), float(dda2), float(nhr), float(hnr),
+    float(rpde), float(dfa), float(spread1), float(spread2), float(d2), float(ppe)
+]]
+
             prediction = parkinsons_model.predict(input_data)
             st.success("Has Parkinson's Disease" if prediction[0] == 1 else "No Parkinson's Disease")
         except Exception as e:
