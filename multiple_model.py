@@ -9,11 +9,11 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 # Load models
-diabetes_model = pickle.load(open('D:/internship/SAV files/diabetes_model.sav', 'rb'))
-heart_disease_model = pickle.load(open('D:/internship/SAV files/heart_diseaseLR.sav', 'rb'))
+diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
+heart_disease_model = pickle.load(open('heart_diseaseLR.sav', 'rb'))
 
 # Parkinson’s model loaded from dict
-parkinsons_data = pickle.load(open('D:/internship/SAV files/ParkinsonsSVM.sav', 'rb'))
+parkinsons_data = pickle.load(open('ParkinsonsSVM.sav', 'rb'))
 parkinsons_model = parkinsons_data['model'] if isinstance(parkinsons_data, dict) else parkinsons_data
 
 # Sidebar
